@@ -4,6 +4,7 @@ from json.decoder import JSONArray
 
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
+from django.db.models import QuerySet
 from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import TaskForm
@@ -42,6 +43,26 @@ def findTask(request):
 
 
 def jobs_by_city(request, city):
+    class Public_task(object):
+        title=''
+        description =''
+        region=''
+        skills=''
+
+        def __init__(self, title, description, region, skills):
+            self.title =title
+            self.description = description
+            self.region = region
+            self.skills = skills
+
     relevant_tasks = Task.objects.filter(city__contains=city)
-    leads_as_json = serializers.serialize('json', relevant_tasks)
-    return HttpResponse(leads_as_json, content_type='json')
+    new_task_set = [];
+    import jsonpickle
+    for task in relevant_tasks:
+        new_task = Public_task(title=task.title, description=task.description, region=task.region,skills=task.skills)
+        new_task_set.append(new_task)
+    # leads_as_json = serializers.serialize('json', relevant_tasks)
+    # return HttpResponse(leads_as_json, content_type='json')
+    print(json.dumps(json.loads(jsonpickle.encode(new_task_set, unpicklable=False)), indent=2))
+
+    return HttpResponse(json.dumps(json.loads(jsonpickle.encode(new_task_set, unpicklable=False)), indent=2))
