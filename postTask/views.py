@@ -22,3 +22,15 @@ def postTask(request):
         return HttpResponse("<h2>Task added </h2>")
     else:
         return render(request, 'postTask/post_task.html', {'form': form})
+
+@login_required
+def findTask(request):
+    html =''
+    if (request.user.username != ""):
+        html+='<a href="/accounts/logout">logout</a>'
+    html += '<ol>'
+    all_tasks = Task.objects.all()
+    for task in all_tasks:
+        html+='<br><br><li><ul> title : '+task.title+'</ul><ul> description: '+task.description+'</ul><ul>author :' +task.author+'</ul></li>'
+    html+='</ol>'
+    return HttpResponse(html)

@@ -10,8 +10,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
-    request.user.groups.add(1);
-    request.user.groups.add(2);
     return HttpResponse(request.user.username +' '+str(request.user.groups.all()))
     # return HttpResponseRedirect(
     #     reverse('profiles_profile_detail',

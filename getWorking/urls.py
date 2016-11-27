@@ -15,14 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.core.checks import templates
 
-from  postTask import views
-from postTask.views import postTask
+from getWorking import views
+from .views import index
+from postTask.views import postTask, findTask
 
 urlpatterns = [
+    url(r'^$', index),
+    url(r'^welcome/', views.welcome),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/home/', include('workerProfile.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^postTask$', postTask, name='post_new'),
+    url(r'^findTask$', findTask, name='find'),
 
 ]

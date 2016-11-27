@@ -127,4 +127,4 @@ STATIC_URL = '/static/'
 
 # AUTH_USER_MODEL = 'offers.User'
 
-LOGIN_REDIRECT_URL = '/accounts/home'
+LOGIN_REDIRECT_URL = '/welcome'
