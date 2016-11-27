@@ -21,3 +21,6 @@ class Task(models.Model):
     author = models.CharField(max_length=100)
     publishdate = models.CharField(max_length=100)
     phone = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.title +' - ' +self.city

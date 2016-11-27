@@ -52,3 +52,8 @@ in JSON format by using the api:
         "title": "clean the garden"
     }]
 
+
+##TO DO
+
+Integrate the UI with the backend.
+The UI templates are already available as standalone html, css and js files.
