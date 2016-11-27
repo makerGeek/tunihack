@@ -19,9 +19,10 @@ from django.core.checks import templates
 
 from getWorking import views
 from .views import index
-from postTask.views import postTask, findTask
+from postTask.views import postTask, findTask , jobs_by_city
 
 urlpatterns = [
+    url(r'^apply/(?P<phone>[0-9]+)/(?P<task>.+)$', views.apply, name='details'),
     url(r'^$', index),
     url(r'^welcome/', views.welcome),
     url(r'^admin/', admin.site.urls),
@@ -29,5 +30,6 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^postTask$', postTask, name='post_new'),
     url(r'^findTask$', findTask, name='find'),
+    url(r'^api/city/(?P<city>.+)$', jobs_by_city, name='jobs_by_city'),
 
 ]

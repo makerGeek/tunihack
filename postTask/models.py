@@ -20,3 +20,4 @@ class Task(models.Model):
     skills = models.CharField(max_length=500)
     author = models.CharField(max_length=100)
     publishdate = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
