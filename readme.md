@@ -3,6 +3,9 @@ This is a sharing platform that connects people in need of a specific skill with
 possess that skill and are ready to offer it for a fee.
 The platform is developed using python with django framework.
 
+### Video Demo
+[![Video](http://img.youtube.com/vi/nyQBVXAxopk/0.jpg)](https://www.youtube.com/watch?v=nyQBVXAxopk "sharing platform")
+
 ##Dependencies
 django, django-registration, jsonpickle
 
